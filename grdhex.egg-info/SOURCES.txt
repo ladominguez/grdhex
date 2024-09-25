@@ -1,0 +1,6 @@
+README.md
+setup.py
+grdhex.egg-info/PKG-INFO
+grdhex.egg-info/SOURCES.txt
+grdhex.egg-info/dependency_links.txt
+grdhex.egg-info/top_level.txt

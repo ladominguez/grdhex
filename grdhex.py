@@ -47,7 +47,7 @@ class grid:
 
 if __name__ == '__main__':
     region = [0, 100, 0, 100]
-    Nx = 8
+    Nx = 40
 
     g = grid(region, Nx)
 
