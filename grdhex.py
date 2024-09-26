@@ -87,18 +87,26 @@ class grid:
                 return hexagon
         return None
     
+    def find_hexagon_id(self, x, y):
+        point = Point(x, y)
+        for hexagon in self.hexagons:
+            polygon = Polygon(list(zip(hexagon.x, hexagon.y)))
+            if polygon.contains(point):
+                return hexagon.id
+        return None
+    
     def __repr__(self):
         return f"grid(region={self.region}, Nx={self.Nx}, Ny = {self.Ny}, N = {self.N})"
 
 if __name__ == '__main__':
     region = [0, 100, 0, 100]
-    Nx = 2
+    Nx = 10
 
     x_random = uniform(0, 100, 1)
     y_random = uniform(0, 100, 1)
 
-    x_random = 10
-    y_random = -5
+    #x_random = 10
+    #y_random = -5
 
     g = grid(region, Nx)
     hexagon = g.find_hexagon(x_random, y_random)
@@ -108,6 +116,8 @@ if __name__ == '__main__':
     grid_plot = g.plot_hexagons(ids=True)
     grid_plot.plot(x_random, y_random, 'bo')
     grid_plot.plot(hexagon.x, hexagon.y,color='b', linewidth=2)
+    id = g.find_hexagon_id(x_random, y_random)
+    print(f"Point ({x_random}, {y_random}) is inside hexagon {id}")
 
 
 
