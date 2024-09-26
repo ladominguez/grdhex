@@ -3,6 +3,7 @@ from matplotlib import pyplot as plt
 from shapely.geometry.polygon import Polygon
 from shapely.geometry import Point
 from numpy.random import uniform
+from copy import deepcopy
 
 class grid:
     class hexagon:
@@ -55,6 +56,9 @@ class grid:
             self.hexagons.append(_hexagon)
         
         self.N = len(self.hexagons)
+    
+    def copy(self):
+        return deepcopy(self)
 
     def __len__(self):
         return self.N
@@ -88,7 +92,7 @@ class grid:
 
 if __name__ == '__main__':
     region = [0, 100, 0, 100]
-    Nx = 8
+    Nx = 2
 
     x_random = uniform(0, 100, 1)
     y_random = uniform(0, 100, 1)
