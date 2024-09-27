@@ -95,6 +95,16 @@ class grid:
                 return hexagon.id
         return None
     
+    def find_hexagon_by_id(self, id):
+        for hexagon in self.hexagons:
+            if hexagon.id == id:
+                return hexagon
+        return None
+    
+    def set_value_for_hexagon(self, id, value):
+        hexagon = self.find_hexagon_by_id(id)
+        hexagon.value = value
+    
     def __repr__(self):
         return f"grid(region={self.region}, Nx={self.Nx}, Ny = {self.Ny}, N = {self.N})"
 
