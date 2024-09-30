@@ -52,7 +52,7 @@ class grid:
 
         for _id, (_x, _y) in enumerate(zip(self._X, self._Y)):
             _x_hex, _y_hex = _x + _f * self._dx * np.cos(np.deg2rad(_theta)), _y + _f * self._dx * np.sin(np.deg2rad(_theta))
-            _hexagon = self.hexagon(_x_hex, _y_hex, _id, value=0)
+            _hexagon = self.hexagon(_x_hex, _y_hex, _id, value=None)
             self.hexagons.append(_hexagon)
         
         self.N = len(self.hexagons)
@@ -66,7 +66,14 @@ class grid:
     def get_ihexagon(self, i):
         x, y = self.hexagons[i]
         return x,y
-    
+
+    def list_hexagons(self):
+        count = 0
+        for k, hexagon in enumerate(self.hexagons):
+            if hexagon.value is not None:
+                print(f"{k} - {len(hexagon.value)}")
+                count += 1
+        print(f"No. of non empty hexagons: {count}")
 
     def plot_grid(self, ax, **kwargs):
         ax.plot(self.X, self.Y, **kwargs)
